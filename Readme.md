@@ -1,5 +1,7 @@
 # Deploy tensorflow models in flask
 
+Demonstration of tensorflow model deployment as a REST service using flask. Note, this does not use tensorflow serving.
+
 Developed and tested in python 3.
 
 Start using `python3 api.py`
