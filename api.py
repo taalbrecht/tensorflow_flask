@@ -31,7 +31,7 @@ def apply_model(d):
         y = tf.placeholder(tf.float32, [n], name='y')
         m = tf.Variable([1.0], name='m')
         b = tf.Variable([1.0], name='b')
-        y = tf.add(tf.mul(m, x), b) # fit y_i = m * x_i + b
+        y = tf.add(tf.multiply(m, x), b) # fit y_i = m * x_i + b
         y_act = tf.placeholder(tf.float32, [n], name='y_')
 
         # minimize sum of squared error between trained and actual.
@@ -40,7 +40,7 @@ def apply_model(d):
 
         feed_dict = {x: np.array([float(d['x_in'])]), y_act: np.array([float(d['y_star'])])}
         saver = tf.train.Saver()
-        saver.restore(session, 'linear.chk')
+        saver.restore(session, './linear.chk')
         y_i, _, _ = session.run([y, m, b], feed_dict)
     return jsonify(output=float(y_i))
 
